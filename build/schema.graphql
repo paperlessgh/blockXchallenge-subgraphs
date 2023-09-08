@@ -1,0 +1,24 @@
+type Challenge @entity {
+  id: String! # challengeId
+  topicId: BigInt! 
+  stake: BigInt! 
+  createdAt: BigInt! 
+  maturity: BigInt!
+  state: Int!
+  participants: [ParticipantChallenge!]! @derivedFrom(field: "challenge")
+  winners: [Bytes!]!
+  losers: [Bytes!]!
+  results: Bytes!
+  params: Bytes!
+}
+
+type Participant @entity {
+  id: String! # address 
+  Challenges: [ParticipantChallenge!]! @derivedFrom(field: "participant")
+}
+
+type ParticipantChallenge @entity {
+  id: String! # Set to `Participant.id.concat(Challenge.id)`
+  participant: Participant!
+  challenge: Challenge!
+}

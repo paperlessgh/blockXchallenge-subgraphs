@@ -1,0 +1,8 @@
+{
+  "optimism-goerli": {
+    "ChallengePool": {
+      "address": "0x5f4efaAE950d4C487B986987E32fDD34f9B732Fb",
+      "startBlock": 14379077
+    }
+  }
+}

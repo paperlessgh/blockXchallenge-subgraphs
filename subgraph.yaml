@@ -1,0 +1,25 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ChallengePool
+    network: optimism-goerli
+    source:
+      address: "0x5f4efaAE950d4C487B986987E32fDD34f9B732Fb"
+      abi: ChallengePool
+      startBlock: 14379077
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - PoolChallenge
+      abis:
+        - name: ChallengePool
+          file: ./abis/ChallengePool.json
+      eventHandlers:
+        - event: PoolChallenge(indexed uint256)
+          handler: handlePoolChallenge
+      file: ./src/challenge-pool.ts
