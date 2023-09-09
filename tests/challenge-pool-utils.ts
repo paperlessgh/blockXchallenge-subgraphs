@@ -1,20 +1,25 @@
-import { newMockEvent } from "matchstick-as"
-import { ethereum, BigInt } from "@graphprotocol/graph-ts"
 import {
-  PoolChallenge
-} from "../generated/ChallengePool/ChallengePool"
+  assert,
+  describe,
+  test,
+  clearStore,
+  beforeAll,
+  afterAll
+} from "matchstick-as/assembly/index"
+import { Address, BigInt } from "@graphprotocol/graph-ts"
 
-export function createPoolChallengeEvent(challengeId: BigInt): PoolChallenge {
-  let poolChallengeEvent = changetype<PoolChallenge>(newMockEvent())
+// Tests structure (matchstick-as >=0.5.0)
+// https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
 
-  poolChallengeEvent.parameters = new Array()
+describe("Describe entity assertions", () => {
+  beforeAll(() => {
+    
+  })
 
-  poolChallengeEvent.parameters.push(
-    new ethereum.EventParam(
-      "challengeId",
-      ethereum.Value.fromUnsignedBigInt(challengeId)
-    )
-  )
+  afterAll(() => {
+    clearStore()
+  })
 
-  return poolChallengeEvent
-}
+  // For more test scenarios, see:
+  // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
+})

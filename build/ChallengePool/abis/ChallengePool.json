@@ -104,14 +104,14 @@
         "type": "uint8"
       },
       {
-        "internalType": "bytes",
+        "internalType": "int256",
         "name": "results",
-        "type": "bytes"
+        "type": "int256"
       },
       {
-        "internalType": "bytes",
+        "internalType": "string",
         "name": "params",
-        "type": "bytes"
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -130,14 +130,14 @@
         "type": "uint256"
       },
       {
-        "internalType": "bytes",
+        "internalType": "string",
         "name": "_params",
-        "type": "bytes"
+        "type": "string"
       },
       {
-        "internalType": "bytes",
+        "internalType": "int256",
         "name": "_proposal",
-        "type": "bytes"
+        "type": "int256"
       }
     ],
     "name": "createChallenge",
@@ -222,9 +222,9 @@
                 "type": "address"
               },
               {
-                "internalType": "bytes",
+                "internalType": "int256",
                 "name": "proposal",
-                "type": "bytes"
+                "type": "int256"
               }
             ],
             "internalType": "struct IChallengePool.Participant[]",
@@ -242,14 +242,14 @@
             "type": "address[]"
           },
           {
-            "internalType": "bytes",
+            "internalType": "int256",
             "name": "results",
-            "type": "bytes"
+            "type": "int256"
           },
           {
-            "internalType": "bytes",
+            "internalType": "string",
             "name": "params",
-            "type": "bytes"
+            "type": "string"
           }
         ],
         "internalType": "struct IChallengePool.Challenge",
@@ -409,9 +409,9 @@
                 "type": "address"
               },
               {
-                "internalType": "bytes",
+                "internalType": "int256",
                 "name": "proposal",
-                "type": "bytes"
+                "type": "int256"
               }
             ],
             "internalType": "struct IChallengePool.Participant[]",
@@ -429,14 +429,14 @@
             "type": "address[]"
           },
           {
-            "internalType": "bytes",
+            "internalType": "int256",
             "name": "results",
-            "type": "bytes"
+            "type": "int256"
           },
           {
-            "internalType": "bytes",
+            "internalType": "string",
             "name": "params",
-            "type": "bytes"
+            "type": "string"
           }
         ],
         "internalType": "struct IChallengePool.Challenge",
@@ -455,9 +455,9 @@
         "type": "uint256"
       },
       {
-        "internalType": "bytes",
+        "internalType": "int256",
         "name": "_proposal",
-        "type": "bytes"
+        "type": "int256"
       }
     ],
     "name": "joinChallenge",
@@ -540,9 +540,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "uint256",
         "name": "_feePercent",
-        "type": "uint8"
+        "type": "uint256"
       }
     ],
     "name": "setFeePercent",
@@ -553,9 +553,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "uint256",
         "name": "_joiningThreshold",
-        "type": "uint8"
+        "type": "uint256"
       }
     ],
     "name": "setJoiningThreshold",
@@ -566,9 +566,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "uint256",
         "name": "_minMaturity",
-        "type": "uint8"
+        "type": "uint256"
       }
     ],
     "name": "setMinMaturity",
@@ -579,9 +579,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint8",
+        "internalType": "uint256",
         "name": "_participantsLimit",
-        "type": "uint8"
+        "type": "uint256"
       }
     ],
     "name": "setParticipantsLimit",

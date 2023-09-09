@@ -1,17 +1,17 @@
 {
-  "name": "challenge-pool",
+  "name": "challengepool",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ challenge-pool",
-    "create-local": "graph create --node http://localhost:8020/ challenge-pool",
-    "remove-local": "graph remove --node http://localhost:8020/ challenge-pool",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 challenge-pool",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ likemdzokoto/challengepool",
+    "create-local": "graph create --node http://localhost:8020/ likemdzokoto/challengepool",
+    "remove-local": "graph remove --node http://localhost:8020/ likemdzokoto/challengepool",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 likemdzokoto/challengepool",
     "test": "graph test"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.56.0",
+    "@graphprotocol/graph-cli": "0.57.0",
     "@graphprotocol/graph-ts": "0.30.0"
   },
   "devDependencies": { "matchstick-as": "0.5.0" }

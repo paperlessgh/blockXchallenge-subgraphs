@@ -1,11 +1,11 @@
 {
   "optimism-goerli": {
-    "ChallengePool": {
-      "address": "0x5f4efaAE950d4C487B986987E32fDD34f9B732Fb",
-      "startBlock": 14379077
-    },
     "TopicRegistry": {
-      "address": "0xbD3c5059280BEd54DfE2c50971a912333ff5003C"
+      "address": "0xbD3c5059280BEd54DfE2c50971a912333ff5003C",
+      "startBlock": 14378607
+    },
+    "Contract": {
+      "address": "0xfCc955BEcC20f6AB2E4F2b58A727F19D38BC12e0"
     }
   }
 }

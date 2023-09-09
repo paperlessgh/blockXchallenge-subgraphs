@@ -3,27 +3,6 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum
-    name: ChallengePool
-    network: optimism-goerli
-    source:
-      address: "0x5f4efaAE950d4C487B986987E32fDD34f9B732Fb"
-      abi: ChallengePool
-      startBlock: 14379077
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - OwnershipTransferred
-        - PoolChallenge
-      abis:
-        - name: ChallengePool
-          file: ChallengePool/abis/ChallengePool.json
-      eventHandlers:
-        - event: PoolChallenge(indexed uint256)
-          handler: handlePoolChallenge
-      file: ChallengePool/ChallengePool.wasm
-  - kind: ethereum
     name: TopicRegistry
     network: optimism-goerli
     source:
@@ -35,11 +14,32 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Topic
+        - PoolTopic
       abis:
         - name: TopicRegistry
-          file: TopicRegistry/abis/TopicRegistry.json
+          file: TopicRegistry\abis\TopicRegistry.json
       eventHandlers:
         - event: PoolTopic(indexed uint256)
           handler: handleTopic
-      file: TopicRegistry/TopicRegistry.wasm
+      file: TopicRegistry\TopicRegistry.wasm
+  - kind: ethereum
+    name: ChallengePool
+    network: optimism-goerli
+    source:
+      address: "0xfCc955BEcC20f6AB2E4F2b58A727F19D38BC12e0"
+      abi: ChallengePool
+      startBlock: 14409968
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+        - PoolChallenge
+      abis:
+        - name: ChallengePool
+          file: ChallengePool\abis\ChallengePool.json
+      eventHandlers:
+        - event: PoolChallenge(indexed uint256)
+          handler: handlePoolChallenge
+      file: ChallengePool\ChallengePool.wasm

@@ -1,3 +1,11 @@
+type Topic @entity(immutable: true) {
+  id: String!
+  title:String!
+  description: String!
+  maintainer:Bytes!
+  evaluator:Bytes!
+  state:Int!
+}
 type Challenge @entity {
   id: String! # challengeId
   topicId: BigInt! 
@@ -8,8 +16,8 @@ type Challenge @entity {
   participants: [ParticipantChallenge!]! @derivedFrom(field: "challenge")
   winners: [Bytes!]!
   losers: [Bytes!]!
-  results: Bytes!
-  params: Bytes!
+  results: BigInt!
+  params: String!
 }
 
 type Participant @entity {
@@ -21,12 +29,4 @@ type ParticipantChallenge @entity {
   id: String! # Set to `Participant.id.concat(Challenge.id)`
   participant: Participant!
   challenge: Challenge!
-}
-type Topic @entity(immutable: true) {
-  id: String!
-  title:String!
-  description: String!
-  maintainer:Bytes!
-  evaluator:Bytes!
-  state:Int!
 }

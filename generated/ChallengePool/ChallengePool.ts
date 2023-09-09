@@ -56,8 +56,8 @@ export class ChallengePool__challengePoolsResult {
   value2: BigInt;
   value3: BigInt;
   value4: i32;
-  value5: Bytes;
-  value6: Bytes;
+  value5: BigInt;
+  value6: string;
 
   constructor(
     value0: BigInt,
@@ -65,8 +65,8 @@ export class ChallengePool__challengePoolsResult {
     value2: BigInt,
     value3: BigInt,
     value4: i32,
-    value5: Bytes,
-    value6: Bytes
+    value5: BigInt,
+    value6: string
   ) {
     this.value0 = value0;
     this.value1 = value1;
@@ -87,8 +87,8 @@ export class ChallengePool__challengePoolsResult {
       "value4",
       ethereum.Value.fromUnsignedBigInt(BigInt.fromI32(this.value4))
     );
-    map.set("value5", ethereum.Value.fromBytes(this.value5));
-    map.set("value6", ethereum.Value.fromBytes(this.value6));
+    map.set("value5", ethereum.Value.fromSignedBigInt(this.value5));
+    map.set("value6", ethereum.Value.fromString(this.value6));
     return map;
   }
 
@@ -112,11 +112,11 @@ export class ChallengePool__challengePoolsResult {
     return this.value4;
   }
 
-  getResults(): Bytes {
+  getResults(): BigInt {
     return this.value5;
   }
 
-  getParams(): Bytes {
+  getParams(): string {
     return this.value6;
   }
 }
@@ -158,12 +158,12 @@ export class ChallengePool__getChallengeResultValue0Struct extends ethereum.Tupl
     return this[7].toBytesArray();
   }
 
-  get results(): Bytes {
-    return this[8].toBytes();
+  get results(): BigInt {
+    return this[8].toBigInt();
   }
 
-  get params(): Bytes {
-    return this[9].toBytes();
+  get params(): string {
+    return this[9].toString();
   }
 }
 
@@ -172,8 +172,8 @@ export class ChallengePool__getChallengeResultValue0ParticipantsStruct extends e
     return this[0].toAddress();
   }
 
-  get proposal(): Bytes {
-    return this[1].toBytes();
+  get proposal(): BigInt {
+    return this[1].toBigInt();
   }
 }
 
@@ -250,20 +250,20 @@ export class ChallengePool__getTopicChallengeResultChallengeStruct extends ether
     >();
   }
 
-  get winners(): Array<Bytes> {
-    return this[6].toBytesArray();
+  get winners(): Array<Address> {
+    return this[6].toAddressArray();
   }
 
-  get losers(): Array<Bytes> {
-    return this[7].toBytesArray();
+  get losers(): Array<Address> {
+    return this[7].toAddressArray();
   }
 
-  get results(): Bytes {
-    return this[8].toBytes();
+  get results(): BigInt {
+    return this[8].toBigInt();
   }
 
-  get params(): Bytes {
-    return this[9].toBytes();
+  get params(): string {
+    return this[9].toString();
   }
 }
 
@@ -272,8 +272,8 @@ export class ChallengePool__getTopicChallengeResultChallengeParticipantsStruct e
     return this[0].toAddress();
   }
 
-  get proposal(): Bytes {
-    return this[1].toBytes();
+  get proposal(): BigInt {
+    return this[1].toBigInt();
   }
 }
 
@@ -361,7 +361,7 @@ export class ChallengePool extends ethereum.SmartContract {
   challengePools(param0: BigInt): ChallengePool__challengePoolsResult {
     let result = super.call(
       "challengePools",
-      "challengePools(uint256):(uint256,uint256,uint256,uint256,uint8,bytes,bytes)",
+      "challengePools(uint256):(uint256,uint256,uint256,uint256,uint8,int256,string)",
       [ethereum.Value.fromUnsignedBigInt(param0)]
     );
 
@@ -371,8 +371,8 @@ export class ChallengePool extends ethereum.SmartContract {
       result[2].toBigInt(),
       result[3].toBigInt(),
       result[4].toI32(),
-      result[5].toBytes(),
-      result[6].toBytes()
+      result[5].toBigInt(),
+      result[6].toString()
     );
   }
 
@@ -381,7 +381,7 @@ export class ChallengePool extends ethereum.SmartContract {
   ): ethereum.CallResult<ChallengePool__challengePoolsResult> {
     let result = super.tryCall(
       "challengePools",
-      "challengePools(uint256):(uint256,uint256,uint256,uint256,uint8,bytes,bytes)",
+      "challengePools(uint256):(uint256,uint256,uint256,uint256,uint8,int256,string)",
       [ethereum.Value.fromUnsignedBigInt(param0)]
     );
     if (result.reverted) {
@@ -395,8 +395,8 @@ export class ChallengePool extends ethereum.SmartContract {
         value[2].toBigInt(),
         value[3].toBigInt(),
         value[4].toI32(),
-        value[5].toBytes(),
-        value[6].toBytes()
+        value[5].toBigInt(),
+        value[6].toString()
       )
     );
   }
@@ -436,7 +436,7 @@ export class ChallengePool extends ethereum.SmartContract {
   ): ChallengePool__getChallengeResultValue0Struct {
     let result = super.call(
       "getChallenge",
-      "getChallenge(uint256):((uint256,uint256,uint256,uint256,uint8,(address,bytes)[],address[],address[],bytes,bytes))",
+      "getChallenge(uint256):((uint256,uint256,uint256,uint256,uint8,(address,int256)[],address[],address[],int256,string))",
       [ethereum.Value.fromUnsignedBigInt(_challengeId)]
     );
 
@@ -450,7 +450,7 @@ export class ChallengePool extends ethereum.SmartContract {
   ): ethereum.CallResult<ChallengePool__getChallengeResultValue0Struct> {
     let result = super.tryCall(
       "getChallenge",
-      "getChallenge(uint256):((uint256,uint256,uint256,uint256,uint8,(address,bytes)[],address[],address[],bytes,bytes))",
+      "getChallenge(uint256):((uint256,uint256,uint256,uint256,uint8,(address,int256)[],address[],address[],int256,string))",
       [ethereum.Value.fromUnsignedBigInt(_challengeId)]
     );
     if (result.reverted) {
@@ -540,7 +540,7 @@ export class ChallengePool extends ethereum.SmartContract {
   ): ChallengePool__getTopicChallengeResult {
     let result = super.call(
       "getTopicChallenge",
-      "getTopicChallenge(uint256):((string,string,address,address,uint8),(uint256,uint256,uint256,uint256,uint8,(address,bytes)[],address[],address[],bytes,bytes))",
+      "getTopicChallenge(uint256):((string,string,address,address,uint8),(uint256,uint256,uint256,uint256,uint8,(address,int256)[],address[],address[],int256,string))",
       [ethereum.Value.fromUnsignedBigInt(_challengeId)]
     );
 
@@ -561,7 +561,7 @@ export class ChallengePool extends ethereum.SmartContract {
   ): ethereum.CallResult<ChallengePool__getTopicChallengeResult> {
     let result = super.tryCall(
       "getTopicChallenge",
-      "getTopicChallenge(uint256):((string,string,address,address,uint8),(uint256,uint256,uint256,uint256,uint8,(address,bytes)[],address[],address[],bytes,bytes))",
+      "getTopicChallenge(uint256):((string,string,address,address,uint8),(uint256,uint256,uint256,uint256,uint8,(address,int256)[],address[],address[],int256,string))",
       [ethereum.Value.fromUnsignedBigInt(_challengeId)]
     );
     if (result.reverted) {
@@ -794,12 +794,12 @@ export class CreateChallengeCall__Inputs {
     return this._call.inputValues[1].value.toBigInt();
   }
 
-  get _params(): Bytes {
-    return this._call.inputValues[2].value.toBytes();
+  get _params(): string {
+    return this._call.inputValues[2].value.toString();
   }
 
-  get _proposal(): Bytes {
-    return this._call.inputValues[3].value.toBytes();
+  get _proposal(): BigInt {
+    return this._call.inputValues[3].value.toBigInt();
   }
 }
 
@@ -836,8 +836,8 @@ export class JoinChallengeCall__Inputs {
     return this._call.inputValues[0].value.toBigInt();
   }
 
-  get _proposal(): Bytes {
-    return this._call.inputValues[1].value.toBytes();
+  get _proposal(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
   }
 }
 
@@ -922,8 +922,8 @@ export class SetFeePercentCall__Inputs {
     this._call = call;
   }
 
-  get _feePercent(): i32 {
-    return this._call.inputValues[0].value.toI32();
+  get _feePercent(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
   }
 }
 
@@ -952,8 +952,8 @@ export class SetJoiningThresholdCall__Inputs {
     this._call = call;
   }
 
-  get _joiningThreshold(): i32 {
-    return this._call.inputValues[0].value.toI32();
+  get _joiningThreshold(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
   }
 }
 
@@ -982,8 +982,8 @@ export class SetMinMaturityCall__Inputs {
     this._call = call;
   }
 
-  get _minMaturity(): i32 {
-    return this._call.inputValues[0].value.toI32();
+  get _minMaturity(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
   }
 }
 
@@ -1012,8 +1012,8 @@ export class SetParticipantsLimitCall__Inputs {
     this._call = call;
   }
 
-  get _participantsLimit(): i32 {
-    return this._call.inputValues[0].value.toI32();
+  get _participantsLimit(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
   }
 }
 
