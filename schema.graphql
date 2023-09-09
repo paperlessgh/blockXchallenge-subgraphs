@@ -22,3 +22,11 @@ type ParticipantChallenge @entity {
   participant: Participant!
   challenge: Challenge!
 }
+type Topic @entity(immutable: true) {
+  id: String!
+  title:String!
+  description: String!
+  maintainer:Bytes!
+  evaluator:Bytes!
+  State:Int!
+}

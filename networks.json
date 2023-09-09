@@ -3,6 +3,9 @@
     "ChallengePool": {
       "address": "0x5f4efaAE950d4C487B986987E32fDD34f9B732Fb",
       "startBlock": 14379077
+    },
+    "TopicRegistry": {
+      "address": "0xbD3c5059280BEd54DfE2c50971a912333ff5003C"
     }
   }
 }

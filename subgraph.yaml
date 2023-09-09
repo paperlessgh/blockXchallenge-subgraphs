@@ -23,3 +23,23 @@ dataSources:
         - event: PoolChallenge(indexed uint256)
           handler: handlePoolChallenge
       file: ./src/challenge-pool.ts
+  - kind: ethereum
+    name: TopicRegistry
+    network: optimism-goerli
+    source:
+      address: "0xbD3c5059280BEd54DfE2c50971a912333ff5003C"
+      abi: TopicRegistry
+      startBlock: 14378607
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Topic
+      abis:
+        - name: TopicRegistry
+          file: ./abis/TopicRegistry.json
+      eventHandlers:
+        - event: PoolTopic(indexed uint256)
+          handler: handleTopic
+      file: ./src/topic-registry.ts

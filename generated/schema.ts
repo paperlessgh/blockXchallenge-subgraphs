@@ -296,6 +296,111 @@ export class ParticipantChallenge extends Entity {
   }
 }
 
+export class Topic extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save Topic entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type Topic must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("Topic", id.toString(), this);
+    }
+  }
+
+  static loadInBlock(id: string): Topic | null {
+    return changetype<Topic | null>(store.get_in_block("Topic", id));
+  }
+
+  static load(id: string): Topic | null {
+    return changetype<Topic | null>(store.get("Topic", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get title(): string {
+    let value = this.get("title");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set title(value: string) {
+    this.set("title", Value.fromString(value));
+  }
+
+  get description(): string {
+    let value = this.get("description");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toString();
+    }
+  }
+
+  set description(value: string) {
+    this.set("description", Value.fromString(value));
+  }
+
+  get maintainer(): Bytes {
+    let value = this.get("maintainer");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set maintainer(value: Bytes) {
+    this.set("maintainer", Value.fromBytes(value));
+  }
+
+  get evaluator(): Bytes {
+    let value = this.get("evaluator");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set evaluator(value: Bytes) {
+    this.set("evaluator", Value.fromBytes(value));
+  }
+
+  get State(): i32 {
+    let value = this.get("State");
+    if (!value || value.kind == ValueKind.NULL) {
+      return 0;
+    } else {
+      return value.toI32();
+    }
+  }
+
+  set State(value: i32) {
+    this.set("State", Value.fromI32(value));
+  }
+}
+
 export class ParticipantChallengeLoader extends Entity {
   _entity: string;
   _field: string;
