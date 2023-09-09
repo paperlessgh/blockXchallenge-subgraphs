@@ -1,3 +1,4 @@
+import { Address } from "@graphprotocol/graph-ts";
 import {
   ChallengePool,
   PoolChallenge as PoolChallengeEvent,
@@ -6,6 +7,7 @@ import {
   Challenge,
   Participant,
   ParticipantChallenge,
+  Topic,
 } from "../generated/schema";
 
 export function handlePoolChallenge(event: PoolChallengeEvent): void {
@@ -25,11 +27,11 @@ function upSetChallenge(event: PoolChallengeEvent): Challenge {
     challenge.createdAt = onChainChallenge.createdAt;
     challenge.maturity = onChainChallenge.maturity;
     challenge.params = onChainChallenge.params;
-    challenge.topicId = onChainChallenge.topicId;
+    challenge.topic = onChainChallenge.topicId.toHex();
   }
   challenge.state = onChainChallenge.state;
-  challenge.losers = onChainChallenge.losers;
-  challenge.winners = onChainChallenge.winners;
+  // challenge.losers = onChainChallenge.losers.map((l: Address) => l.toHexString());
+  // challenge.winners = onChainChallenge.winners.map((w: Address) => w.toHexString());
   challenge.results = onChainChallenge.results;
   challenge.save();
   return challenge;

@@ -8,14 +8,14 @@ type Topic @entity(immutable: true) {
 }
 type Challenge @entity {
   id: String! # challengeId
-  topicId: BigInt! 
+  topic: Topic!
   stake: BigInt! 
   createdAt: BigInt! 
   maturity: BigInt!
   state: Int!
   participants: [ParticipantChallenge!]! @derivedFrom(field: "challenge")
-  winners: [Bytes!]!
-  losers: [Bytes!]!
+  # winners: [String!]!
+  # losers: [String!]!
   results: BigInt!
   params: String!
 }

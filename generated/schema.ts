@@ -155,17 +155,17 @@ export class Challenge extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get topicId(): BigInt {
-    let value = this.get("topicId");
+  get topic(): string {
+    let value = this.get("topic");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toString();
     }
   }
 
-  set topicId(value: BigInt) {
-    this.set("topicId", Value.fromBigInt(value));
+  set topic(value: string) {
+    this.set("topic", Value.fromString(value));
   }
 
   get stake(): BigInt {
@@ -226,32 +226,6 @@ export class Challenge extends Entity {
       this.get("id")!.toString(),
       "participants"
     );
-  }
-
-  get winners(): Array<Bytes> {
-    let value = this.get("winners");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytesArray();
-    }
-  }
-
-  set winners(value: Array<Bytes>) {
-    this.set("winners", Value.fromBytesArray(value));
-  }
-
-  get losers(): Array<Bytes> {
-    let value = this.get("losers");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytesArray();
-    }
-  }
-
-  set losers(value: Array<Bytes>) {
-    this.set("losers", Value.fromBytesArray(value));
   }
 
   get results(): BigInt {
