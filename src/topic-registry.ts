@@ -4,7 +4,7 @@ import { Topic } from "../generated/schema"
 
 
 
-export function HandleTopic(event: PoolTopicEvent): void  {
+export function handleTopic(event: PoolTopicEvent): void{
  const topic = upSetTopic(event);
 }
 function upSetTopic(event: PoolTopicEvent): Topic {
