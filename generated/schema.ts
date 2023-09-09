@@ -387,8 +387,8 @@ export class Topic extends Entity {
     this.set("evaluator", Value.fromBytes(value));
   }
 
-  get State(): i32 {
-    let value = this.get("State");
+  get state(): i32 {
+    let value = this.get("state");
     if (!value || value.kind == ValueKind.NULL) {
       return 0;
     } else {
@@ -396,8 +396,8 @@ export class Topic extends Entity {
     }
   }
 
-  set State(value: i32) {
-    this.set("State", Value.fromI32(value));
+  set state(value: i32) {
+    this.set("state", Value.fromI32(value));
   }
 }
 

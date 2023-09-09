@@ -250,12 +250,12 @@ export class ChallengePool__getTopicChallengeResultChallengeStruct extends ether
     >();
   }
 
-  get winners(): Array<Address> {
-    return this[6].toAddressArray();
+  get winners(): Array<Bytes> {
+    return this[6].toBytesArray();
   }
 
-  get losers(): Array<Address> {
-    return this[7].toAddressArray();
+  get losers(): Array<Bytes> {
+    return this[7].toBytesArray();
   }
 
   get results(): Bytes {
