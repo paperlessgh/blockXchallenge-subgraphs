@@ -76,30 +76,30 @@ export class Topic extends Entity {
     this.set("description", Value.fromString(value));
   }
 
-  get maintainer(): Bytes {
+  get maintainer(): string {
     let value = this.get("maintainer");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set maintainer(value: Bytes) {
-    this.set("maintainer", Value.fromBytes(value));
+  set maintainer(value: string) {
+    this.set("maintainer", Value.fromString(value));
   }
 
-  get evaluator(): Bytes {
+  get evaluator(): string {
     let value = this.get("evaluator");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytes();
+      return value.toString();
     }
   }
 
-  set evaluator(value: Bytes) {
-    this.set("evaluator", Value.fromBytes(value));
+  set evaluator(value: string) {
+    this.set("evaluator", Value.fromString(value));
   }
 
   get state(): i32 {

@@ -17,11 +17,11 @@ dataSources:
         - PoolTopic
       abis:
         - name: TopicRegistry
-          file: TopicRegistry\abis\TopicRegistry.json
+          file: TopicRegistry/abis/TopicRegistry.json
       eventHandlers:
         - event: PoolTopic(indexed uint256)
           handler: handleTopic
-      file: TopicRegistry\TopicRegistry.wasm
+      file: TopicRegistry/TopicRegistry.wasm
   - kind: ethereum
     name: ChallengePool
     network: optimism-goerli
@@ -38,8 +38,8 @@ dataSources:
         - PoolChallenge
       abis:
         - name: ChallengePool
-          file: ChallengePool\abis\ChallengePool.json
+          file: ChallengePool/abis/ChallengePool.json
       eventHandlers:
         - event: PoolChallenge(indexed uint256)
           handler: handlePoolChallenge
-      file: ChallengePool\ChallengePool.wasm
+      file: ChallengePool/ChallengePool.wasm

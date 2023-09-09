@@ -2,8 +2,8 @@ type Topic @entity(immutable: true) {
   id: String!
   title:String!
   description: String!
-  maintainer:Bytes!
-  evaluator:Bytes!
+  maintainer:String!
+  evaluator:String!
   state:Int!
 }
 type Challenge @entity {

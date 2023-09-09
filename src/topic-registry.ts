@@ -1,5 +1,8 @@
-import {TopicRegistry, PoolTopic as PoolTopicEvent } from "../generated/TopicRegistry/TopicRegistry"
-import { Topic } from "../generated/schema"
+import {
+  TopicRegistry,
+  PoolTopic as PoolTopicEvent,
+} from "../generated/TopicRegistry/TopicRegistry";
+import { Topic } from "../generated/schema";
 
 export function handleTopic(event: PoolTopicEvent): void {
   const topic = upSetTopic(event);
@@ -16,10 +19,9 @@ function upSetTopic(event: PoolTopicEvent): Topic {
     topic.title = onchainTopic.title;
     topic.description = onchainTopic.description;
   }
-    topic.state = onchainTopic.state;
-    topic.maintainer = onchainTopic.maintainer;
-    topic.evaluator = onchainTopic.evaluator;
-    topic.save();
-    return topic;
-    }
-
+  topic.state = onchainTopic.state;
+  topic.maintainer = onchainTopic.maintainer.toHexString();
+  topic.evaluator = onchainTopic.evaluator.toHexString();
+  topic.save();
+  return topic;
+}
