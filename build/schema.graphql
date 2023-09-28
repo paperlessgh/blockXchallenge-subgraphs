@@ -1,27 +1,27 @@
 type Topic @entity(immutable: true) {
   id: String!
-  title:String!
+  title: String!
   description: String!
-  maintainer:String!
-  evaluator:String!
-  state:Int!
+  maintainer: String!
+  evaluator: String!
+  state: Int!
 }
 type Challenge @entity {
   id: String! # challengeId
   topic: Topic!
-  stake: BigInt! 
-  createdAt: BigInt! 
+  stake: BigInt!
+  createdAt: BigInt!
   maturity: BigInt!
   state: Int!
   participants: [ParticipantChallenge!]! @derivedFrom(field: "challenge")
-  # winners: [String!]!
-  # losers: [String!]!
+  winners: [String!]!
+  losers: [String!]!
   results: BigInt!
   params: String!
 }
 
 type Participant @entity {
-  id: String! # address 
+  id: String! # address
   Challenges: [ParticipantChallenge!]! @derivedFrom(field: "participant")
 }
 
