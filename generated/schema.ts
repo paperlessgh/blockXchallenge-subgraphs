@@ -228,6 +228,32 @@ export class Challenge extends Entity {
     );
   }
 
+  get winners(): Array<string> {
+    let value = this.get("winners");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set winners(value: Array<string>) {
+    this.set("winners", Value.fromStringArray(value));
+  }
+
+  get losers(): Array<string> {
+    let value = this.get("losers");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toStringArray();
+    }
+  }
+
+  set losers(value: Array<string>) {
+    this.set("losers", Value.fromStringArray(value));
+  }
+
   get results(): BigInt {
     let value = this.get("results");
     if (!value || value.kind == ValueKind.NULL) {

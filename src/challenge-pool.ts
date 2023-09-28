@@ -30,8 +30,12 @@ function upSetChallenge(event: PoolChallengeEvent): Challenge {
     challenge.topic = onChainChallenge.topicId.toHex();
   }
   challenge.state = onChainChallenge.state;
-  // challenge.losers = onChainChallenge.losers.map((l: Address) => l.toHexString());
-  // challenge.winners = onChainChallenge.winners.map((w: Address) => w.toHexString());
+  challenge.losers = onChainChallenge.losers.map<string>((l: Address) =>
+    l.toHexString()
+  );
+  challenge.winners = onChainChallenge.winners.map<string>((w: Address) =>
+    w.toHexString()
+  );
   challenge.results = onChainChallenge.results;
   challenge.save();
   return challenge;
